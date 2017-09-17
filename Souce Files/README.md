@@ -9,3 +9,6 @@
 
 ## Exit :-
 - It contains src for exiting the window on which all the simulation is going on.
+
+## Angular :-
+- It contains src for increasing or decreasing the angular velocity of the crank. Max can be 10 and min can be 1.

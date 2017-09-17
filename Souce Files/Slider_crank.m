@@ -1,10 +1,12 @@
 function Slider_crank(object_handle,event,Radius,leng)
         global e1;  
+        global w;
         rstr = get(Radius,'string');
         lstr = get(leng,'string');
         r = str2double(rstr);
         l = str2double(lstr);
-        for thetha = 0:0.1:10*pi;
+        thetha = 0;
+        while thetha < 10*pi;
             if e1 == 0 ; % For closing the window
                 Ax = r * cos(thetha);
                 Ay = r * sin(thetha);
@@ -40,7 +42,8 @@ function Slider_crank(object_handle,event,Radius,leng)
                     [r*cos(thetha),0,-r*cos(thetha)],'AutoScale','off');
                 title('Velocity Vector');
                 axis([-r-1 r+1 -r-1 r+1]);
-                pause(0.000001);
+                thetha = thetha + (0.1*w);
+                pause(0.1);
             else
                 break;
             end

@@ -9,7 +9,7 @@ Matlab is used for coding the GUI and for plotting the complete code. Inbuilt GU
 - Run the GUI file among all the script files and then enjoy.
 
 ## Future Advancements :- 
-- Improve tthe speed of program
+- Improve the speed of program
 - Include more functionalities such as speed control, etc.
 - Change the GUI code and use better GUI software such as Java or Python.
 - Expand this project for Fourbar and Double Crank Mechanism.
