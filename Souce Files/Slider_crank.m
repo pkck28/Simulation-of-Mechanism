@@ -22,10 +22,15 @@ function Slider_crank(object_handle,event,Radius,leng)
                 u = [Ax,Bx-Ax,Bx];
                 v = [Ay,-Ay,0];
                 %Simulation Plot
-                subplot('Position',[0.2 0.1 0.75 0.35]);
-                plot(x,y,'-b*','LineWidth',5);
+                subplot('Position',[0.2 0.1 0.75 0.38]);
+                plot(x,y,'-bo','LineWidth',5);
                 hold on;
-                plot(x1,y1,'-g*','LineWidth',5) 
+                rectangle('Position',[(Bx-0.5) (By-0.3) 1 0.6],...
+                    'FaceColor',[1 0 0],...
+                    'EdgeColor',[1 0 0],...
+                    'LineWidth',0.01,...
+                    'curvature',0.5);
+                plot(x1,y1,'-go','LineWidth',5)
                 hold off;
                 title('Simulation');
                 axis([-r-1 r+l+1 -r-1 r+1]);
