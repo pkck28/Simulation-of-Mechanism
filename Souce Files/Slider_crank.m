@@ -1,14 +1,18 @@
 function Slider_crank(object_handle,event,Radius,leng)
         global e1;  
         global w;
-        global gcf;
+        global sp1;
+        global sp2;
+        global sp3;
+        global sp4;
         rstr = get(Radius,'string');
         lstr = get(leng,'string');
         r = str2double(rstr);
         l = str2double(lstr);
         thetha = 0;
-        while thetha < 10*pi;
-            if e1 == 0 ; % For closing the window
+        while thetha < 10*pi
+            if e1 == 0 
+                % For closing the window
                 Ax = r * cos(thetha);
                 Ay = r * sin(thetha);
                 By = 0;
@@ -23,7 +27,7 @@ function Slider_crank(object_handle,event,Radius,leng)
                 u = [Ax,Bx-Ax,Bx];
                 v = [Ay,-Ay,0];
                 %Simulation Plot
-                subplot('Position',[0.2 0.075 0.35 0.4]); 
+                sp1 = subplot('Position',[0.2 0.075 0.35 0.4]); 
                 plot(x,y,'-bo','Linewidth',5);
                 hold on;
                 rectangle('Position',[(Bx-0.5) (By-0.3) 1 0.6],...
@@ -37,16 +41,16 @@ function Slider_crank(object_handle,event,Radius,leng)
                 axis([-r-1 r+l+1 -r-1 r+1]);
                 axis equal
                 %Position Vector Plot
-                subplot('Position',[0.2 0.55 0.35 0.4]);
+                sp3 = subplot('Position',[0.2 0.55 0.35 0.4]);
                 quiver(X,Y,u,v,'AutoScale','off','Color',[1 0 0]);
                 text([-0.15,Ax+0.2,Bx+0.1],[-0.15,Ay+0.2,By],['O';'A';'B']);
                 text([Ax/2,Bx/2],[Ay/2,0],['R_{A}';'R_{B}']);
                 text(Ax+(Bx-Ax)/2,Ay/2,'R_{BA}');
                 title('Positon Vector');
-                axis([-r-1 r+l+1 -r-1 r+1]);
+                axis([-r-3 r+l+3 -r-3 r+3]);
                 axis equal
                 %Velocity Vector Plot
-                subplot('Position',[0.6 0.55 0.35 0.4]);
+                sp2 = subplot('Position',[0.6 0.55 0.35 0.4]);
                 quiver([0,0,-w*r*sin(thetha)],[0,0,w*r*cos(thetha)],...
                     [-w*r*sin(thetha),((-r*w*sin(thetha)) - ((w*(r^2)*sin(thetha)*cos(thetha))/(sqrt(l^2-(r*sin(thetha))^2)))),(-(((r^2)*w*sin(thetha)*cos(thetha)/(sqrt(l^2-((r*sin(thetha))^2))))))],...
                     [w*r*cos(thetha),0,-w*r*cos(thetha)],'AutoScale','off');
@@ -58,7 +62,7 @@ function Slider_crank(object_handle,event,Radius,leng)
                 axis([w*(-r-1) w*(r+1) w*(-r-1) w*(r+1)]);
                 axis equal
                 %Acceleration Plot
-                subplot('Position',[0.6 0.075 0.35 0.4]);
+                sp4 = subplot('Position',[0.6 0.075 0.35 0.4]);
                 w3 = ((w*r*cos(thetha)*l)/(sqrt(l*l - (r*r*sin(thetha)*sin(thetha)))))/l;
                 phi = pi - (asin((r*sin(thetha))/l));
                 alpha3 = ((w3*w3*l*sin(phi)) - (w*r*sin(thetha))) / (l*cos(phi));
